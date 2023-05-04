@@ -4,15 +4,21 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.spring.electric.Repository.ElecticRepo;
 import com.spring.electric.model.Electric;
-import com.spring.electric.repository.ElectricRepository;
+
 
 @Service
 public class ElectricService {
+	
 	@Autowired
-	private ElectricRepository repository;
+	public ElecticRepo repository;
+	
 	public List<Electric> getElectric(){
 		return repository.findAll();
 	}
@@ -45,5 +51,19 @@ public class ElectricService {
 	public List<Electric> getElectrics() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	//sort
+	public List<Electric> sortDetails(String name) {
+		return repository.findAll(Sort.by(name));
+	}
+	//pagination
+	public List<Electric> page(int num, int size) {
+		// TODO Auto-generated method stub
+		Page<Electric> obj=repository.findAll(PageRequest.of(num, size));
+		return obj.getContent();
+	}
+	public List<Electric> sortpage(int num, int size, String name) {
+		Page<Electric> obj=repository.findAll(PageRequest.of(num, size, Sort.by(name)));
+		return obj.getContent();
 	}
 }

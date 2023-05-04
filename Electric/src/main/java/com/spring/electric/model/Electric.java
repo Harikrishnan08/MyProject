@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "electric")
+@Table(name="elect")
 public class Electric {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,6 +15,11 @@ public class Electric {
 	private String rname;
 	private String location;
 	private float rating;
+	private String email;
+	private String housenumber;
+	private String units;
+	private int Amount;
+	private String pwd;
 	public int getId() {
 		return id;
 	}
@@ -39,9 +44,38 @@ public class Electric {
 	public void setRating(float rating) {
 		this.rating = rating;
 	}
-	@Override
-	public String toString() {
-		return "Restaurant [id=" + id + ", rname=" + rname + ", location=" + location + ", rating=" + rating + "]";
+	public String getEmail() {
+		return email;
 	}
-	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getHousenumber() {
+		return housenumber;
+	}
+	public void setHousenumber(String housenumber) {
+		this.housenumber = housenumber;
+	}
+	public String getUnits() {
+		return units;
+	}
+	public void setUnits(String units) {
+		this.units = units;
+	}
+	public int getAmount() {
+		return Amount;
+	}
+	public void setAmount(int amount) {
+		Amount = amount;
+	}
+	public String getPwd() {
+		return pwd;
+	}
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
 }
+	
+	
+	
+	

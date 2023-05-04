@@ -34,12 +34,33 @@ public class ElectricController {
 	public Electric create(@RequestBody Electric electric) {
 		return service.addElectric(electric);
 	}
-	@PutMapping("/{id}")
+	@PutMapping("/update")
 	public Electric update(@RequestBody Electric electric, @PathVariable int id) {
 		return service.editElectric(electric, id);
 	}
 	@DeleteMapping("/{id}")
 	public String delete(@PathVariable int id) {
 		return service.deleteElectric(id);
+		
+		//
+}
+	@GetMapping("/run/{name}")
+	public List<Electric> sortDetails(@PathVariable("name") String name)
+	{
+		return service.sortDetails(name);
 	}
+	
+	
+	@GetMapping("/run/{pnu}/{psize}")
+	public List<Electric> page(@PathVariable("pnu")int num,@PathVariable("psize")int size)
+	{
+		return service.page(num,size);
+	}
+	
+	@GetMapping("/run/{pnu}/{psize}/{name}")
+	public List<Electric> sortpage(@PathVariable("pnu")int num,@PathVariable("psize")int size,@PathVariable("name") String name)
+	{
+		return service.sortpage(num,size,name);
+	}
+
 }
