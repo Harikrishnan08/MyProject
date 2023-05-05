@@ -14,9 +14,9 @@ import jakarta.transaction.Transactional;
 public interface questionrepo extends JpaRepository<question, Integer> {
 	
 	@Query(value="select* from question",nativeQuery=true)
-	public List<question> get();
+	public List<question> get(int qno);
+	
 	@Query(value="select * from question where qno = ?1", nativeQuery = true)
-
 	public List<question> getD(@Param("qno") int qno);
 
 	
